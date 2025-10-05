@@ -1,39 +1,17 @@
-import streamlit as st
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+# 🤖 CodeAlpha_FAQChatbot
 
-# Sample FAQ data
-faq_data = {
-    "questions": [
-        "What is CodeAlpha?",
-        "How do I submit my internship tasks?",
-        "When will I receive my certificate?",
-        "Can I choose multiple domains?",
-        "Is a demo video mandatory?"
-    ],
-    "answers": [
-        "CodeAlpha is a virtual internship platform offering projects in various domains.",
-        "You must submit your tasks via the official form between Sept 20 – Oct 20.",
-        "Certificates and LORs are issued on Oct 21 if tasks are submitted correctly.",
-        "Yes, you can choose multiple domains, but you only need to complete 2–3 tasks from one.",
-        "No, demo videos are optional. GitHub + LinkedIn post are enough."
-    ]
-}
+This is Task 2 for the CodeAlpha AI Internship — a chatbot that answers FAQs using NLP and cosine similarity.
 
-# Convert to DataFrame
-df = pd.DataFrame(faq_data)
+## 💡 Features
+- TF-IDF based question matching
+- Cosine similarity for best answer selection
+- Streamlit UI for easy interaction
 
-# TF-IDF Vectorization
-vectorizer = TfidfVectorizer()
-tfidf_matrix = vectorizer.fit_transform(df['questions'])
+## 🚀 How to Run
+1. Fork this repo to your GitHub
+2. Go to [streamlit.io/cloud](https://streamlit.io/cloud)
+3. Click “New App” → Select this repo → Choose `app.py`
+4. Done! Your chatbot is live
 
-# Streamlit UI
-st.title("🤖 FAQ Chatbot")
-user_question = st.text_input("Ask a question:")
-
-if user_question:
-    user_vec = vectorizer.transform([user_question])
-    similarity = cosine_similarity(user_vec, tfidf_matrix)
-    best_match = similarity.argmax()
-    st.success(f"Answer: {df['answers'][best_match]}")# ChatBox-for-Faqs--Streamlit-App
+## 🔗 GitHub Repo
+[Insert your repo link here]
